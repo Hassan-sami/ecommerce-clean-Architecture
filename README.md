@@ -1,2 +1,2 @@
 # ecommerce (Still Basic Structure) 
-#update Cqrs pattern
+# update Cqrs pattern
