@@ -1,4 +1,7 @@
 
+using ecommerce.Application;
+using ecommerce.infra;
+
 namespace ecommerce
 {
     public class Program
@@ -14,8 +17,8 @@ namespace ecommerce
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-           
-
+            builder.Services.AddApplicationDependanies();
+            builder.Services.AddInfraDependency(builder.Configuration);
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

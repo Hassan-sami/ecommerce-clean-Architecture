@@ -1,0 +1,16 @@
+﻿using ecommerce.Domain.Enitities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ecommerce.Application.Interfaces
+{
+    public interface IProductService
+    {
+        Task<Product> Create(Product product);
+        ValueTask<Product> GetProductByIdAsync(Guid id);
+    }
+
+}
