@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using ecommerce.Application.Base;
+using ecommerce.Application.Cqrs.Products.queries.Reponses;
+using MediatR;
 using ecommerce.Domain.Enitities;
 namespace ecommerce.Application.Cqrs.Products.Commands.CreateProduct
 {
@@ -12,5 +14,5 @@ namespace ecommerce.Application.Cqrs.Products.Commands.CreateProduct
        string CatName,
        string CatDescription,
        string? CatImageName
-       ) : IRequest<Product>;
+       ) : IRequest<Response<ProductResponse>>;
 }

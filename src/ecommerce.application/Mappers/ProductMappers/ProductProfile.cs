@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ecommerce.Application.Cqrs.Products.queries.Reponses;
 
 namespace ecommerce.Application.Mappers.ProductMappers
 {
@@ -20,6 +21,8 @@ namespace ecommerce.Application.Mappers.ProductMappers
                     Description = src.CatDescription,
                     ImageName = src.CatImageName
                 }));
+            CreateMap<Product,ProductResponse>()
+                .ForMember(p => p.CatgoryName, opt => opt.MapFrom(src => src.Category.Name));
         }
     }
 }
