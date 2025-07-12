@@ -43,6 +43,10 @@ namespace ecommerce.Domain.Specifications
         }
         protected virtual void ApplyPaging(int skip, int take)
         {
+            if(skip < 0)
+                Skip = 0;
+            if(take <= 0)
+                Take = 10;
             Skip = skip;
             Take = take;
             isPagingEnabled = true;

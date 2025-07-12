@@ -14,6 +14,7 @@ public class ProductPaginatedSpec : BaseSpecification<Product>
     }
     public ProductPaginatedSpec(int skip, int take) : base(null) 
     {
+        
         ApplyPaging(skip, take);
     }
 }

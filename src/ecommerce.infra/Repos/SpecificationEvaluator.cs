@@ -40,11 +40,11 @@ namespace ecommerce.infra.Repos
             }
 
             //Apply paging if enabled
-            //if (specification.isPagingEnabled)
-            //    {
-            //        query = query.Skip(specification.Skip)
-            //                     .Take(specification.Take);
-            //    }
+            if (specification.isPagingEnabled)
+                {
+                    query = query.Skip(specification.Skip)
+                                 .Take(specification.Take);
+                }
             return query;
         }
     }

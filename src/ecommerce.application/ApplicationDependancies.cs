@@ -26,7 +26,7 @@ namespace ecommerce.Application
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             // Add FluentValidation
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
+            
             // Add Application Services
             services.AddScoped<IProductService, PorductService>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));

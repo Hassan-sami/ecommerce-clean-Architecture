@@ -2,7 +2,7 @@
 
 namespace ecommerce.Application.Cqrs.Products.Commands.CreateProduct
 {
-    class CreateProductValidator : AbstractValidator<CreateProductCommand>
+    public class CreateProductValidator : AbstractValidator<CreateProductCommand>
     {
         public CreateProductValidator()
         {
