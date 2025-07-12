@@ -15,17 +15,22 @@ namespace ecommerce.Domain.Specifications
         protected BaseSpecification(Expression<Func<T, bool>> criteria)
         {
             Criteria = criteria;
+            Includes = new List<Expression<Func<T, object>>>();
         }
 
-        public Expression<Func<T, bool>> Criteria { get; private set; }
-        public Expression<Func<T, object>> OrderBy { get; private set; }
-        public List<Expression<Func<T, object>>> Includes { get; private set; }
-        public Expression<Func<T, object>> OrderByDesc { get; private set; }
+        public Expression<Func<T, bool>>? Criteria { get; private set; }
+        public Expression<Func<T, object>>? OrderBy { get; private set; }
+        public List<Expression<Func<T, object>>>? Includes { get; private set; }
+        public Expression<Func<T, object>>? OrderByDesc { get; private set; }
+        
+        public int Take { get; private set; }
+        public int Skip { get; private set; }
+        public bool isPagingEnabled { get; private set; } = false;
 
 
         protected virtual void AddInclude(Expression<Func<T, object>> includeString)
         {
-            Includes.Add(includeString);
+            Includes?.Add(includeString);
         }
         
         protected virtual void ApplyOrderBy(Expression<Func<T, object>> orderByExpression)
@@ -35,6 +40,12 @@ namespace ecommerce.Domain.Specifications
         protected virtual void ApplyOrderByDescending(Expression<Func<T, object>> orderByDescendingExpression)
         {
             OrderByDesc = orderByDescendingExpression;
+        }
+        protected virtual void ApplyPaging(int skip, int take)
+        {
+            Skip = skip;
+            Take = take;
+            isPagingEnabled = true;
         }
     }
 }

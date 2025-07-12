@@ -9,13 +9,15 @@ namespace ecommerce.Domain.Interfaces
 {
     public interface IProductRepository : IRepository<Product>
     {
-        Task<IReadOnlyList<Product>> GetProducsAsync();
+        Task<IReadOnlyList<Product>> GetProductsAsync();
 
         ValueTask<Product> GetProdctByIdAsync(Guid id);
 
         Task<IReadOnlyList<Product>> GetProductByNameAsync(string productName);
 
 
-        Task<Product> GetProductByIdWithCategoryAsync(Guid productId);
+        Task<Product?> GetProductByIdWithCategoryAsync(Guid productId);
+        
+        ValueTask<IReadOnlyList<Product>> GetProductsPaginatedAsync(int skip, int take);
     }
 }

@@ -22,5 +22,20 @@ namespace ecommerce.Application.Services
             
             return await repository.GetProdctByIdAsync(id);
         }
+
+        public async ValueTask<Product?> GetProdctByIdWithCategoryAsync(Guid id)
+        {
+            return await repository.GetProductByIdWithCategoryAsync(id);
+        }
+
+        public async ValueTask<IReadOnlyList<Product>> GetAllProducts()
+        {
+            return await repository.GetProductsAsync();
+        }
+
+        public async ValueTask<IReadOnlyList<Product>> GetProductsPaginatedAsync(int skip, int take)
+        {
+            return await repository.GetProductsPaginatedAsync(skip, take);
+        }
     }
 }

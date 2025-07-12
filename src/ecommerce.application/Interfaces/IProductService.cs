@@ -11,6 +11,9 @@ namespace ecommerce.Application.Interfaces
     {
         Task<Product> Create(Product product);
         ValueTask<Product> GetProductByIdAsync(Guid id);
+        ValueTask<Product?> GetProdctByIdWithCategoryAsync(Guid id);
+        ValueTask<IReadOnlyList<Product>> GetAllProducts();
+        ValueTask<IReadOnlyList<Product>> GetProductsPaginatedAsync(int skip, int take);
     }
 
 }

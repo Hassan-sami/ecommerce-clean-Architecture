@@ -20,15 +20,21 @@ namespace ecommerce.infra.Repos
             return await base.GetByIdAsync(id);
         }
 
-        public async Task<IReadOnlyList<Product>> GetProducsAsync()
+        public async Task<IReadOnlyList<Product>> GetProductsAsync()
         {
-            return await GetAllAsync();
+            return await GetAsync(disableTracking: true);
         }
 
-        public async Task<Product> GetProductByIdWithCategoryAsync(Guid productId)
+        public async Task<Product?> GetProductByIdWithCategoryAsync(Guid productId)
         {
             var spec = new ProductWithCategorySpec(productId);
             return (await GetAsync(spec)).FirstOrDefault();
+        }
+
+        public async ValueTask<IReadOnlyList<Product>> GetProductsPaginatedAsync(int skip, int take)
+        {
+            var spec = new ProductPaginatedSpec(skip, take);
+            return await GetAsync(spec);
         }
 
         public async Task<IReadOnlyList<Product>> GetProductByNameAsync(string productName)
