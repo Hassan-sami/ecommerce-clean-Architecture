@@ -30,4 +30,10 @@
     <data name="Success" xml:space="preserve">
         <value>تم بنجاح</value>
     </data>
+    <data name="PasswordOrUserIsIncorrect" xml:space="preserve">
+        <value>المستخدم او الباسورد خطأ</value>
+    </data>
+    <data name="UserNotFound" xml:space="preserve">
+        <value />
+    </data>
 </root>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ecommerce.Domain.Interfaces
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T>
     {
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate);

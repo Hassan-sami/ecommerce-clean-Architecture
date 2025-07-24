@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ecommerce.Domain.Interfaces
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
-        IRepository<TEntity> repository<TEntity>() where TEntity : BaseEntity;
+        // IRepository<TEntity> repository<TEntity>() where TEntity : BaseEntity;
         Task BeginTransactionAsync();
-        Task SaveChangesAsync();
+        // Task SaveChangesAsync();
         Task CommitAsync();
         Task RollbackAsync();
 

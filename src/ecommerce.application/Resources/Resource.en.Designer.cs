@@ -87,6 +87,15 @@ namespace ecommerce.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to password or user is incorrect.
+        /// </summary>
+        internal static string PasswordOrUserIsIncorrect {
+            get {
+                return ResourceManager.GetString("PasswordOrUserIsIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
         internal static string Success {

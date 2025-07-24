@@ -1,4 +1,5 @@
-﻿using ecommerce.Application.Interfaces;
+﻿using System.Linq.Expressions;
+using ecommerce.Application.Interfaces;
 using ecommerce.Domain.Enitities;
 using ecommerce.Domain.Interfaces;
 
@@ -36,6 +37,26 @@ namespace ecommerce.Application.Services
         public async ValueTask<IReadOnlyList<Product>> GetProductsPaginatedAsync(int skip, int take)
         {
             return await repository.GetProductsPaginatedAsync(skip, take);
+        }
+
+        public async ValueTask<Product> DeleteProductByIdAsync(Guid id)
+        {
+            var product = await repository.GetProdctByIdAsync(id);
+            if (product == null)
+                return null;
+            await repository.DeleteAsync(product);
+            return product;
+        }
+
+        public async ValueTask<Product> Update(Product product)
+        {
+            await repository.UpdateAsync(product);
+            var includes = new List<Expression<Func<Product, object>>>()
+            {   
+                (p => p.Category)
+            };
+            return (await repository.GetAsync(p => p.Id == product.Id,null,
+                includes,true)).FirstOrDefault();
         }
     }
 }

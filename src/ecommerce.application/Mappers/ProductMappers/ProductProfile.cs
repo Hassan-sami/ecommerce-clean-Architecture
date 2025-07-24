@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ecommerce.Application.Cqrs.Products.Commands.UpdateProduct;
 using ecommerce.Application.Cqrs.Products.queries.Reponses;
 
 namespace ecommerce.Application.Mappers.ProductMappers
@@ -20,9 +21,10 @@ namespace ecommerce.Application.Mappers.ProductMappers
                     Name = src.CatName,
                     Description = src.CatDescription,
                     ImageName = src.CatImageName
-                }));
+                })).ReverseMap();
             CreateMap<Product,ProductResponse>()
                 .ForMember(p => p.CatgoryName, opt => opt.MapFrom(src => src.Category.Name));
+            CreateMap<UpdateProductCommand, Product>();
         }
     }
 }

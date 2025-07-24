@@ -1,10 +1,9 @@
-﻿using System.Net;
-using ecommerce.api.Common;
-using ecommerce.Application.Base;
+﻿using ecommerce.api.Common;
 using ecommerce.Application.Cqrs.Products.Commands.CreateProduct;
+using ecommerce.Application.Cqrs.Products.Commands.DeleteProduct;
+using ecommerce.Application.Cqrs.Products.Commands.UpdateProduct;
 using ecommerce.Application.Cqrs.Products.queries;
 using ecommerce.Application.Cqrs.Products.queries.Proudcts;
-using ecommerce.Application.Cqrs.Products.queries.Reponses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,6 +42,19 @@ namespace ecommerce.api.Controllers
         {
             var product = await mediator.Send(query);
             return NewResult(product);
+        }
+
+        [HttpDelete("[action]/{id}")]
+        public async Task<IActionResult> DeleteById([FromRoute]DeleteProductByIdCommand byIdCommand)
+        {
+            var result =await mediator.Send(byIdCommand);
+            return NewResult(result);
+        }
+        [HttpPut("[action]/")]
+        public async Task<IActionResult> Update(UpdateProductCommand command)
+        {
+            var result =await mediator.Send(command);
+            return NewResult(result);
         }
     }
 }

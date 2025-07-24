@@ -87,11 +87,29 @@ namespace ecommerce.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to المستخدم او الباسورد خطأ.
+        /// </summary>
+        internal static string PasswordOrUserIsIncorrect {
+            get {
+                return ResourceManager.GetString("PasswordOrUserIsIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to تم بنجاح.
         /// </summary>
         internal static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
     }

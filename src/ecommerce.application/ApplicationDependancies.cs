@@ -4,12 +4,9 @@ using ecommerce.Application.Services;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ecommerce.Application
 {
@@ -17,6 +14,8 @@ namespace ecommerce.Application
     {
         public static IServiceCollection AddApplicationDependanies(this IServiceCollection services)
         {
+            
+            
             // Add AutoMapper
             services.AddAutoMapper(cfg =>
             {
@@ -30,6 +29,11 @@ namespace ecommerce.Application
             // Add Application Services
             services.AddScoped<IProductService, PorductService>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IAuthenticationSerive, AuthenticationSerivice>();
+            services.AddScoped<IUserSerivce, UserService>();
+            services.AddHttpContextAccessor();
+            services.AddMvc();
             return services;
         }
     }

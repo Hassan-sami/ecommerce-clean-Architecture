@@ -10,5 +10,5 @@ using ecommerce.Application.Cqrs.Products.queries.Reponses;
 
 namespace ecommerce.Application.Cqrs.Products.queries
 {
-    public record class PorductGetByIdQuery(Guid id) : IRequest<Response<ProductResponse>>;
+    public record  PorductGetByIdQuery(Guid id) : IRequest<Response<ProductResponse>>;
 }

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Localization;
 
 namespace ecommerce.Application.Cqrs.Products.queries.Proudcts;
 
-public class GetProductsHandler : IRequestHandler<GetProductsQuery, Response<IReadOnlyList<ProductResponse>>>,
+public class GetProductsHandler : ResponseHandler,IRequestHandler<GetProductsQuery, Response<IReadOnlyList<ProductResponse>>>,
                                    IRequestHandler<GetProductsPaginatedQuery, Response<IReadOnlyList<ProductResponse>>>
 {
     private readonly IProductService _productService;
@@ -17,7 +17,7 @@ public class GetProductsHandler : IRequestHandler<GetProductsQuery, Response<IRe
 
     public GetProductsHandler(IProductService productService, 
                                 IStringLocalizer<Resource> localizer,
-                                 IMapper mapper)
+                                 IMapper mapper) : base(localizer)
     {
         _productService = productService;
         _localizer = localizer;
@@ -28,17 +28,15 @@ public class GetProductsHandler : IRequestHandler<GetProductsQuery, Response<IRe
     {
         var products = await _productService.GetAllProducts();
         var response = (IReadOnlyList<ProductResponse>)products.Select(p => _mapper.Map<ProductResponse>(p)).ToList();
-        return new ResponseHandler(_localizer).Success<IReadOnlyList<ProductResponse>>(response);
+        return Success<IReadOnlyList<ProductResponse>>(response);
     }
 
     public async Task<Response<IReadOnlyList<ProductResponse>>> Handle(GetProductsPaginatedQuery request, CancellationToken cancellationToken)
     {
           var products = await _productService.GetProductsPaginatedAsync((request.page - 1) * request.size,request.size);
           if (products == null)
-              return new ResponseHandler(_localizer).NotFound<IReadOnlyList<ProductResponse>>(
-                  _localizer[LocalizationConstants.NotFound]);
+              return NotFound<IReadOnlyList<ProductResponse>>(_localizer[LocalizationConstants.NotFound]);
           var response = (IReadOnlyList<ProductResponse>)products.Select(p => _mapper.Map<ProductResponse>(p)).ToList();
-          
-          return new ResponseHandler(_localizer).Success<IReadOnlyList<ProductResponse>>(response);
+          return Success<IReadOnlyList<ProductResponse>>(response);
     }
 }

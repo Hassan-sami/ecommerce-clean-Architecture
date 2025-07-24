@@ -30,4 +30,7 @@
     <data name="Success" xml:space="preserve">
         <value>Success</value>
     </data>
+    <data name="PasswordOrUserIsIncorrect" xml:space="preserve">
+        <value>password or user is incorrect</value>
+    </data>
 </root>

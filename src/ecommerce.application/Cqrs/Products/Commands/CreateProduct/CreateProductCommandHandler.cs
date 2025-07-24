@@ -16,14 +16,14 @@ using Microsoft.Extensions.Localization;
 
 namespace ecommerce.Application.Cqrs.Products.Commands.CreateProduct
 {
-    class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Response<ProductResponse>>
+    class CreateProductCommandHandler : ResponseHandler,IRequestHandler<CreateProductCommand, Response<ProductResponse>>
     {
         private readonly IProductService productService;
         private readonly IMapper mapper;
         private readonly IStringLocalizer<Resource> _localizer;
 
         public CreateProductCommandHandler(IProductService productService, IMapper mapper,
-                            IStringLocalizer<Resource> localizer)
+                            IStringLocalizer<Resource> localizer) : base(localizer)
         {
             this.productService = productService;
             this.mapper = mapper;
@@ -34,7 +34,7 @@ namespace ecommerce.Application.Cqrs.Products.Commands.CreateProduct
             var product  = mapper.Map<Product>(request);
             await productService.Create(product);
             var response = mapper.Map<ProductResponse>(product);
-            return new ResponseHandler(_localizer).Created(response);
+            return Created(response);
         }
     }
 

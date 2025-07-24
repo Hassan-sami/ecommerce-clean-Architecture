@@ -1,14 +1,12 @@
 ﻿using ecommerce.Domain.Enitities;
+using ecommerce.Domain.Enitities.Identities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ecommerce.infra.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser,IdentityRole,string>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
