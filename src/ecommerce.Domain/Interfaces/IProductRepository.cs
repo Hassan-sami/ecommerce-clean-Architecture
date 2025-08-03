@@ -11,7 +11,7 @@ namespace ecommerce.Domain.Interfaces
     {
         Task<IReadOnlyList<Product>> GetProductsAsync();
 
-        ValueTask<Product> GetProdctByIdAsync(Guid id);
+        ValueTask<Product?> GetProdctByIdAsync(Guid id);
 
         Task<IReadOnlyList<Product>> GetProductByNameAsync(string productName);
 

@@ -1,11 +1,14 @@
 
 using System.Globalization;
 using ecommerce.Application;
+using ecommerce.Application.options;
 using ecommerce.infra;
+using ecommerce.infra.Context;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.EntityFrameworkCore;
 
 namespace ecommerce
 {
@@ -16,14 +19,20 @@ namespace ecommerce
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.WebHost.ConfigureKestrel(serverOptions =>
+            {
+                serverOptions.ListenAnyIP(80); // HTTP
+                serverOptions.ListenAnyIP(443, listenOptions =>
+                {
+                    listenOptions.UseHttps("https/devcert.pfx", "YourPassword123");
+                });
+            });
+            
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            
-            
-            
             #region other regions depenancyies
                 builder.Services.AddApplicationDependanies();
                 builder.Services.AddInfraDependency(builder.Configuration);
@@ -59,8 +68,24 @@ namespace ecommerce
                 var factory = x.GetRequiredService<IUrlHelperFactory>();
                 return factory.GetUrlHelper(actionContext);
             });
+            var corsconfig = builder.Configuration.GetSection("cors").Get<Cors>();
+            builder.Services.AddCors(opt =>
+                {
+                
+                opt.AddPolicy("mainPolicy", policy =>
+                {
+                    policy.WithOrigins(corsconfig?.origins).AllowAnyHeader().AllowAnyMethod();
+
+                });
+            });
             
             var app = builder.Build();
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>(); 
+                db.Database.Migrate(); // Applies migrations at startup
+                
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -72,8 +97,10 @@ namespace ecommerce
             var config = app.Configuration.Get<RequestLocalizationOptions>();
             app.UseRequestLocalization(config);
             app.UseMiddleware<ExceptionMiddleware>();
-
+            app.UseHsts();
             app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseCors("mainPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();

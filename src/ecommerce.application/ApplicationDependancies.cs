@@ -32,6 +32,10 @@ namespace ecommerce.Application
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IAuthenticationSerive, AuthenticationSerivice>();
             services.AddScoped<IUserSerivce, UserService>();
+            services.AddScoped<ICateogryService, CategoryService>();
+            services.AddScoped<IOrderService, OrderSerivce>();
+            services.AddScoped<ICheckOutService, CheckOutService>();
+            services.AddScoped<ICartService, CartService>();
             services.AddHttpContextAccessor();
             services.AddMvc();
             return services;

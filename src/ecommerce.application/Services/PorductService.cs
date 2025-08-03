@@ -18,7 +18,7 @@ namespace ecommerce.Application.Services
             return await repository.AddAsync(product);    
         }
 
-        public async ValueTask<Product> GetProductByIdAsync(Guid id)
+        public async ValueTask<Product?> GetProductByIdAsync(Guid id)
         {
             
             return await repository.GetProdctByIdAsync(id);

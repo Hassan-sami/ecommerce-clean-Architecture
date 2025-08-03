@@ -5,6 +5,7 @@ using ecommerce.Application.Cqrs.Products.Commands.UpdateProduct;
 using ecommerce.Application.Cqrs.Products.queries;
 using ecommerce.Application.Cqrs.Products.queries.Proudcts;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce.api.Controllers
@@ -26,6 +27,7 @@ namespace ecommerce.api.Controllers
 
         }
         [HttpPost("[action]/")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create([FromBody]CreateProductCommand command)
         {
             var product = await mediator.Send(command);
@@ -45,12 +47,14 @@ namespace ecommerce.api.Controllers
         }
 
         [HttpDelete("[action]/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteById([FromRoute]DeleteProductByIdCommand byIdCommand)
         {
             var result =await mediator.Send(byIdCommand);
             return NewResult(result);
         }
         [HttpPut("[action]/")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update(UpdateProductCommand command)
         {
             var result =await mediator.Send(command);

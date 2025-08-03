@@ -10,6 +10,6 @@ public class CartMapper : Profile
     public CartMapper()
     {
         CreateMap<CreateCartCommand, Cart>();
-        CreateMap<Cart, CartResponse>();
+        CreateMap<Cart, CartResponse>().ReverseMap();
     }
 }

@@ -10,7 +10,7 @@ namespace ecommerce.Domain.Enitities
     public class Cart : BaseEntity
     {
         public Guid UserId { get; set; }
-        public List<CartItem> Items { get; set; } = new List<CartItem>();
+        public List<CartItem>? Items { get; set; } = new List<CartItem>();
 
         public void AddItem(Guid productId, int quantity = 1, string color = "Black", decimal unitPrice = 0)
         {

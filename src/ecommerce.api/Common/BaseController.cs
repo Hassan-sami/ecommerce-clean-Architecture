@@ -15,6 +15,8 @@ public class BaseController : ControllerBase
         this.mediator = mediator;
     }
 
+   
+
 
     #region Actions
     public ObjectResult NewResult<T>(Response<T> response)

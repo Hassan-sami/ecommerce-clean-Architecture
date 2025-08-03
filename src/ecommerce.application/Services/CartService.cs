@@ -1,4 +1,5 @@
-﻿using ecommerce.Application.Interfaces;
+﻿using System.Linq.Expressions;
+using ecommerce.Application.Interfaces;
 using ecommerce.Domain.Enitities;
 using ecommerce.Domain.Interfaces;
 
@@ -29,5 +30,20 @@ public class CartService : ICartService
             return;
         await _cartRepository.DeleteAsync(cart);
         
+    }
+
+    public async ValueTask<Cart?> GetCartByUserId(Guid UserId)
+    {
+        return  (await _cartRepository.GetAsync(c => c.UserId == UserId)).FirstOrDefault();
+    }
+
+    public async ValueTask<Cart?> GetCartWithSpecAsync(ISpecification<Cart> spec)
+    {
+        return (await _cartRepository.GetAsync(spec)).FirstOrDefault();
+    }
+
+    public async ValueTask UpdateAsync(Cart cart)
+    {
+        await _cartRepository.UpdateAsync(cart);
     }
 }

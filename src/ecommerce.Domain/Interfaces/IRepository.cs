@@ -17,7 +17,7 @@ namespace ecommerce.Domain.Interfaces
                                         List<Expression<Func<T, object>>> includes = null,
                                         bool disableTracking = true);
         Task<IReadOnlyList<T>> GetAsync(ISpecification<T> spec);
-        Task<T> GetByIdAsync(Guid id);
+        Task<T?> GetByIdAsync(Guid id);
         Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);

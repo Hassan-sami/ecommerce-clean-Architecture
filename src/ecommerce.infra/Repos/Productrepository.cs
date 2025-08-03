@@ -15,7 +15,7 @@ namespace ecommerce.infra.Repos
             
         }
 
-        public async ValueTask<Product> GetProdctByIdAsync(Guid id)
+        public async ValueTask<Product?> GetProdctByIdAsync(Guid id)
         {
             return await base.GetByIdAsync(id);
         }

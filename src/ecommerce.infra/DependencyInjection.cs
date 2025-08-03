@@ -29,6 +29,8 @@ namespace ecommerce.infra
             services.AddScoped<IProductRepository, Productrepository>();
             services.AddScoped<ITokenSerivce, TokenService>();
             services.AddScoped<IRefreshTokenRepo, RefreshTokenRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IRefreshTokenService, RefreshTOkenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             

@@ -9,15 +9,35 @@ namespace ecommerce.Domain.Enitities
 {
     public class OrderItem
     {
-        
-        public int Quantity { get; set; }
-        public string Color { get; set; }
+        private OrderItem(
+            Guid orderId,
+            Guid productId,
+            int quantity,
+            decimal price)
+        {
+            OrderId = orderId;
+            ProductId = productId;
+            Quantity = quantity;
+            UnitPrice = price;
+            
+        }
+        public int Quantity { get; set; } 
         public decimal UnitPrice { get; set; }
-        public decimal TotalPrice { get; set; }
-
+        public Guid OrderId { get; private set; }
+        public Order Order { get; set; }
         [ForeignKey("Product")]
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
         public Product Product { get; set; }
+        public static OrderItem Create(Guid orderId, Guid productId, int quantity, decimal price)
+        {
+            OrderItem orderItem = new OrderItem(
+                orderId,
+                productId,
+                quantity,
+                price);
+
+            return orderItem;
+        }
         
     }
 }

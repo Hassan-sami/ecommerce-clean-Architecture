@@ -37,6 +37,8 @@
     <PackageReference Include="MailKit" Version="4.13.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
@@ -52,7 +54,12 @@
     <ProjectReference Include="..\ecommerce.Domain\ecommerce.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+<ItemGroup>
+    <Folder Include="Cqrs\Orders\Commands\" />
+    <Folder Include="Cqrs\Users\Responses\" />
+  </ItemGroup>
+  
+  <!-- <ItemGroup>
     <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.17\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
     </Reference>
@@ -66,10 +73,8 @@
     <Reference Include="Microsoft.Extensions.Localization.Abstractions">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.17\Microsoft.Extensions.Localization.Abstractions.dll</HintPath>
     </Reference>
-  </ItemGroup>
+  </ItemGroup> -->
 
-  <ItemGroup>
-    <Folder Include="Cqrs\Users\Responses\" />
-  </ItemGroup>
+  
 
 </Project>

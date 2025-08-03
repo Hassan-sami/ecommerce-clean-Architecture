@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Extensions.Identity.Stores">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.18\Microsoft.Extensions.Identity.Stores.dll</HintPath>
+      <!-- <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.18\Microsoft.Extensions.Identity.Stores.dll</HintPath> -->
     </Reference>
   </ItemGroup>
 
