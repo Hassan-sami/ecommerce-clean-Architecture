@@ -93,16 +93,6 @@ The **CQRS pattern** ensures that read operations (e.g., fetching product detail
        cd src/ecommerce.api
        dotnet run
        ```
-
-### Running Tests
-
-To execute unit and integration tests:
-```bash
-dotnet test
-```
-
-*(Note: Test files are assumed to be in the `tests/` directory. Update this command if the test setup differs.)*
-
 ## Project Structure
 
 ```plaintext
@@ -112,7 +102,6 @@ ecommerce-clean-architecture/
 │   ├── ecommerce.application/ # Use cases, commands, queries, and CQRS handlers
 │   ├── ecommerce.infra/       # Database, external services, and repositories
 │   ├── ecommerce.api/         # API controllers and endpoints
-├── tests/                     # Unit and integration tests
 ├── Dockerfile                 # Docker build configuration for the web app
 ├── docker-compose.yml         # Docker Compose configuration for services
 ├── .gitignore                 # Ignored files and directories
