@@ -27,14 +27,14 @@ public class CategoryController : BaseController
     }
 
     
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetCategoryById(GetCategoryByIdQuery query)
+    [HttpGet("[action]/{Id}")]
+    public async Task<IActionResult> GetCategoryById([FromRoute]GetCategoryByIdQuery query)
     {
         var response = await mediator.Send(query);
         return NewResult(response);
     }
     
-    [HttpPost]
+    [HttpPost("[action]")]
     [Authorize(Roles = "admin")]
     public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryCommand request)
     {
@@ -42,7 +42,7 @@ public class CategoryController : BaseController
         return NewResult(result);
     }
     
-    [HttpPut("{id:guid}")]
+    [HttpPut("[action]/{Id}")]
     [Authorize(Roles = "admin")]
     public async Task<IActionResult> UpdateCategory([FromBody,FromRoute] UpdateCategoryCommand request)
     {
@@ -50,7 +50,7 @@ public class CategoryController : BaseController
         return NewResult(response);
     }
     
-    [HttpDelete("{id:guid}")]
+    [HttpDelete("[action]/{Id}")]
     [Authorize(Roles = "admin")]
     public async Task<IActionResult> DeleteCategory([FromRoute]DeleteCategoryCommand command)
     {

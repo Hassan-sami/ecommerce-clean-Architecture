@@ -28,6 +28,8 @@ namespace ecommerce.Domain.Enitities
             {
                 order.AddOrderItem(item.ProductId, item.Quantity, item.Product.UnitPrice);
             }
+
+            order.Status = OrderStatus.Finished;
             return order;
         }
 

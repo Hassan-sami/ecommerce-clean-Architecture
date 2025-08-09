@@ -31,6 +31,7 @@ namespace ecommerce.infra
             services.AddScoped<IRefreshTokenRepo, RefreshTokenRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<IOrderRepository, OrderRespository>();
             services.AddScoped<IRefreshTokenService, RefreshTOkenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
@@ -82,7 +83,7 @@ namespace ecommerce.infra
                     options.SignInScheme = "cookieg";
                     
                 });
-            
+            services.AddScoped<CreateTopSelletStoredProducre>();
             return services;
         }
     }

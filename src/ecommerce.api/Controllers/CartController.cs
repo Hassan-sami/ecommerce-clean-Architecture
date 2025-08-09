@@ -36,20 +36,20 @@ public class CartController : BaseController
         return NewResult(response);
     }
     [HttpGet("[action]")]
-    public async Task<IActionResult> Get(GetCartByUserQuery query)
+    public async Task<IActionResult> Get([FromRoute]GetCartByUserQuery query)
     {
         var response = await mediator.Send(query);
         return NewResult(response);
     }
 
-    [HttpGet("[action]")]
+    [HttpPost("[action]")]
     public async Task<IActionResult> AddItem(AddItemCommand command)
     {
         var response = await mediator.Send(command);
         return NewResult(response);
     }
     [HttpDelete("[action]/{Id}")]
-    public async Task<IActionResult> RemoveBasketProductItem([FromBody] RemoveBasketProductItemCommand request)
+    public async Task<IActionResult> RemoveBasketProductItem([FromRoute] RemoveBasketProductItemCommand request)
     {
         var response = await mediator.Send(request);
         return NewResult(response);
@@ -63,7 +63,7 @@ public class CartController : BaseController
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> CheckOut(CheckOutCommand command)
+    public async Task<IActionResult> CheckOut([FromBody]CheckOutCommand command)
     {
         var response = await mediator.Send(command);
         return NewResult(response);

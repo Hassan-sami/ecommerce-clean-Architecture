@@ -53,9 +53,9 @@ namespace ecommerce.api.Controllers
             var result =await mediator.Send(byIdCommand);
             return NewResult(result);
         }
-        [HttpPut("[action]/")]
+        [HttpPut("[action]")]
         [Authorize(Roles = "admin")]
-        public async Task<IActionResult> Update(UpdateProductCommand command)
+        public async Task<IActionResult> Update([FromBody]UpdateProductCommand command)
         {
             var result =await mediator.Send(command);
             return NewResult(result);

@@ -4,11 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ecommerce.Domain.common;
 
 namespace ecommerce.Domain.Enitities
 {
-    public class OrderItem
+    public class OrderItem : BaseEntity
     {
+        public OrderItem()
+        {
+            
+        }
         private OrderItem(
             Guid orderId,
             Guid productId,

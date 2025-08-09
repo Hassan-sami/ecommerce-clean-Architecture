@@ -14,11 +14,19 @@ public class OrderController : BaseController
     {
         
     }
-    [HttpGet]
+    [HttpGet("[action]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public async Task<IActionResult> GetOrderByUserId([FromBody] GetOrderByUserIdQuery request)
+    public async Task<IActionResult> GetOrderByUserId([FromQuery] GetOrderByUserIdQuery request)
     {
         var result = await mediator.Send(request);
         return NewResult(result);
+    }
+
+    [HttpGet("[action]")]
+    public async Task<IActionResult> TopSeller([FromRoute] GetTopSellersQuery request)
+    
+    {
+            var response = await mediator.Send(request);
+            return NewResult(response);
     }
 }

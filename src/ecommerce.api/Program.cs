@@ -86,6 +86,12 @@ namespace ecommerce
                 db.Database.Migrate(); // Applies migrations at startup
                 
             }
+            // Execute stored procedure creation
+             using (var scope = app.Services.CreateScope())
+            {
+                var dbInitializer = scope.ServiceProvider.GetRequiredService<CreateTopSelletStoredProducre>();
+                 dbInitializer.Create().GetAwaiter().GetResult();
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
