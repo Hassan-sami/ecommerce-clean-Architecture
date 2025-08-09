@@ -39,7 +39,7 @@ public class AuthenticationController : BaseController
     [HttpGet("[action]")]
     public IActionResult SignInWithGoogle()
     {
-        var url = Url.Action(nameof(Token), "User", Request.Scheme);
+        var url = Url.Action(nameof(Token), "Authentication", Request.Scheme);
         var properties = new AuthenticationProperties() { RedirectUri = url };
         return Challenge(properties, GoogleDefaults.AuthenticationScheme);
     }
