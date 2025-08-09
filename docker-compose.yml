@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.8'
 
 services:
@@ -26,3 +27,33 @@ services:
 
 volumes:
   sqlvolume:
+=======
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "YourStrong@Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlvolume:/var/opt/mssql
+
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7198:80"
+      - "7199:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=AppDb;User=sa;Password=YourStrong@Passw0rd;Encrypt=False;
+    depends_on:
+      - sqlserver
+
+volumes:
+  sqlvolume:
+>>>>>>> 3343f5a8f47ce2480c5df5728a8090338ec39f13

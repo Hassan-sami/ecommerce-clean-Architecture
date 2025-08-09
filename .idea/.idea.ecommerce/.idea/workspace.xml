@@ -10,37 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71f18e09-1ef7-4e08-90bf-901cb413d70b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ecommerce/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ecommerce/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ecommerce/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ecommerce/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ecommerce/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.Domain/Interfaces/IOrderRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.api/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.application/Cqrs/Orders/Queries/GetQuery/GetTopSellersQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.application/Cqrs/Orders/Responses/BestSellerProductResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.infra/Context/CreateTopSelletStoredProducre.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.infra/Migrations/20250803121825_Initial.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.infra/Migrations/20250803121825_Initial.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.infra/Migrations/20250809144545_OrderMig.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.infra/Migrations/20250809144545_OrderMig.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.infra/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ecommerce.infra/Repos/OrderRespository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.Domain/Enitities/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.Domain/Enitities/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.Domain/Enitities/OrderItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.Domain/Enitities/OrderItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.api/Controllers/CartController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.api/Controllers/CartController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.api/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.api/Controllers/CategoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.api/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.api/Controllers/OrderController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.api/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.api/Controllers/ProductController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.application/Cqrs/Orders/Queries/GetQuery/GetOrderQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.application/Cqrs/Orders/Queries/GetQuery/GetOrderQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.application/Interfaces/IOrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.application/Interfaces/IOrderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.application/Services/OrderSerivce.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.application/Services/OrderSerivce.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.infra/Context/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.infra/Context/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ecommerce.infra/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce.infra/DependencyInjection.cs" afterDir="false" />
-    </list>
+    <list default="true" id="71f18e09-1ef7-4e08-90bf-901cb413d70b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -308,6 +278,10 @@
       <riderPublish configuration="Release" platform="Any CPU" runtime="win-x64" target_folder="$PROJECT_DIR$/src/ecommerce.api/bin/Release/net8.0/win-x64/publish" target_framework="net8.0" uuid_high="-773660040594439309" uuid_low="-6857894738614411663" />
       <method v="2" />
     </configuration>
+    <configuration name="Publish ecommerce to folder (15)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Release" platform="Any CPU" runtime="win-x64" target_folder="$PROJECT_DIR$/src/ecommerce.api/bin/Release/net8.0/win-x64/publish" target_framework="net8.0" uuid_high="-773660040594439309" uuid_low="-6857894738614411663" />
+      <method v="2" />
+    </configuration>
     <configuration name="Publish ecommerce to folder (1)" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish configuration="Release" platform="Any CPU" runtime="win-x64" self_contained="true" target_folder="$PROJECT_DIR$/src/ecommerce.application/bin/Release/net8.0/win-x64/publish" target_framework="net8.0" uuid_high="5309482854809027736" uuid_low="-5467636936447594614" />
       <method v="2" />
@@ -468,7 +442,7 @@
       <workItem from="1754218931453" duration="1396000" />
       <workItem from="1754224197297" duration="1275000" />
       <workItem from="1754480660139" duration="1227000" />
-      <workItem from="1754746295770" duration="5652000" />
+      <workItem from="1754746295770" duration="6351000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <option name="closed" value="true" />
